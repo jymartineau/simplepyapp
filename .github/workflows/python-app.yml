@@ -36,3 +36,14 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with no pytest
       run: python hello.py
+
+    - name: Create Artifact
+      run: |
+        mkdir artifacts
+        cp hello.py artifacts/
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: python-artifact
+        path: artifacts/
